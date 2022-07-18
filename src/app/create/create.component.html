@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Create New Movie</h1>
+    <form (ngSubmit)="submit()" [formGroup]="form" enctype="multipart/form-data">
+    <div class="form-group mt-4">
+      <label for="name">Movie Name</label>
+      <input formControlName="name" type="text" class="form-control">
+    </div>
+    <div class="form-group mt-4">
+      <label for="description">Description</label>
+      <input formControlName="description" type="text" class="form-control">
+    </div>
+    <div class="form-group mt-4">
+      <label for="fileSource">Movie Image</label>
+      <input formControlName="fileSource" type="file" class="form-control" (change)="onFileChange($event)">
+    </div>
+    <button class="btn btn-primary mt-3" type="submit">Submit</button>
+  </form>
+</div>

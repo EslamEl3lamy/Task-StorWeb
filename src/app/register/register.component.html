@@ -1,0 +1,29 @@
+<h1 class=" text-center">Registeration Form</h1>
+<div *ngIf="flag" class="alert alert-danger m-auto">
+    <p>This E-Mail Already Registered</p>
+</div>
+
+
+<form class="w-75 m-auto py-5" [formGroup]="registerForm" (ngSubmit)="getRegisterInfo(registerForm)">
+  <div class="form-group">
+    <label>Name</label>
+    <input [class.is-valid]="registerForm.get('name').errors == null && registerForm.get('name').touched"
+    class="form-control" type="text" formControlName="name"/>
+    <p class="text-danger py-2" *ngIf="registerForm.get('name').errors != null && registerForm.get('name').touched">name Invalid</p>
+  </div>
+  <div class="form-group">
+    <label>E-Mail</label>
+    <input [class.is-valid]="registerForm.get('email').errors == null && registerForm.get('email').touched"
+    class="form-control" type="email" formControlName="email" />
+    <p class="text-danger py-2" *ngIf="registerForm.get('email').touched && registerForm.get('email').errors">E-Mail Invalid</p>
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input [class.is-valid]="registerForm.get('password').errors == null && registerForm.get('password').touched"
+    class="form-control" type="password" formControlName="password" />
+    <p class="text-danger py-2" *ngIf="registerForm.get('password').touched && registerForm.get('password').errors">Please Enter Captial & Small Letters</p>
+  </div>
+  <button [disabled]="registerForm.invalid" class="btn btn-mine m-2" type="submit">Register</button>
+</form>
+<!-- *ngIf="registerForm.get('first_name').errors != null && registerForm.get('first_name').touched" -->
+<!-- *ngIf= "registerForm.get('first_name').errors !=null && registerForm.get('first_name').touched" -->

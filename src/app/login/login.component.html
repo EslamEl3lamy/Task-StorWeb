@@ -1,0 +1,19 @@
+
+<form class="w-75 m-auto py-5" [formGroup]="loginForm" (ngSubmit)="getLoginInfo(loginForm)">
+  <div class="form-group">
+    <label>E-Mail</label>
+    <input [class.is-valid]="loginForm.get('email').errors == null && loginForm.get('email').touched" 
+    class="form-control" type="email" formControlName="email" />
+    <p class="text-danger py-2" *ngIf="loginForm.get('email').touched && loginForm.get('email').errors">E-Mail Invalid</p>
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input [class.is-valid]="loginForm.get('password').errors == null && loginForm.get('password').touched" 
+    class="form-control" type="password" formControlName="password" />
+    <p class="text-danger py-2" *ngIf="loginForm.get('password').touched && loginForm.get('password').errors">Please Enter Captial & Small Letters</p>
+  </div>
+  <div *ngIf="flag" class="alert alert-danger">
+    {{errorMessage}}
+  </div>
+  <button [disabled]="loginForm.invalid" class="btn btn-mine m-2" type="submit">Login</button>
+</form>
